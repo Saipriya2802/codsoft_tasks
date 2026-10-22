@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Nextora — Modern Business Solutions</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: #dfe2ea;
+      color: #111;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 45px 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1160px;
+      min-height: 530px;
+      background: #fdfcf8;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ---------------- NAVBAR ---------------- */
+
+    .navbar {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 70px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .logo {
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -0.7px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 29px;
+      margin-left: 90px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #222;
+      font-size: 10px;
+      font-weight: 400;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.55;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .login {
+      color: white;
+      font-size: 10px;
+      text-decoration: none;
+    }
+
+    .signup {
+      background: white;
+      color: #111;
+      border: none;
+      border-radius: 5px;
+      padding: 9px 15px;
+      font-size: 10px;
+      cursor: pointer;
+    }
+
+    /* ---------------- GREEN NAV AREA ---------------- */
+
+    .green-area {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 30%;
+      height: 82px;
+      background: #176257;
+      z-index: 1;
+    }
+
+    .navbar > * {
+      z-index: 2;
+    }
+
+    /* ---------------- HERO ---------------- */
+
+    .hero {
+      display: grid;
+      grid-template-columns: 48% 52%;
+      min-height: 448px;
+    }
+
+    .hero-content {
+      padding: 57px 0 50px 70px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-title {
+      font-size: 45px;
+      line-height: 1.07;
+      letter-spacing: -2.4px;
+      font-weight: 500;
+      max-width: 470px;
+      margin-bottom: 20px;
+    }
+
+    .hero-description {
+      font-size: 10px;
+      line-height: 1.7;
+      color: #777;
+      max-width: 340px;
+      margin-bottom: 24px;
+    }
+
+    .buttons {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      margin-bottom: 70px;
+    }
+
+    .primary-btn {
+      border: 0;
+      background: #ff633d;
+      color: white;
+      border-radius: 5px;
+      padding: 12px 19px;
+      font-size: 10px;
+      cursor: pointer;
+    }
+
+    .secondary-btn {
+      text-decoration: none;
+      color: #222;
+      font-size: 9px;
+    }
+
+    /* ---------------- CLIENT LOGOS ---------------- */
+
+    .logos {
+      display: flex;
+      align-items: center;
+      gap: 38px;
+      color: #777;
+    }
+
+    .logo-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 14px;
+      font-weight: 600;
+      font-style: italic;
+      white-space: nowrap;
+    }
+
+    .logo-circle {
+      width: 12px;
+      height: 12px;
+      border: 2px solid #777;
+      border-radius: 50%;
+      position: relative;
+    }
+
+    .logo-circle::after {
+      content: "";
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #777;
+      border-radius: 50%;
+      top: 2px;
+      left: 2px;
+    }
+
+    /* ---------------- IMAGE AREA ---------------- */
+
+    .hero-image-area {
+      background: #176257;
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 25px 0 0 20px;
+    }
+
+    .hero-image {
+      width: 82%;
+      height: 375px;
+      object-fit: cover;
+      border-radius: 14px 14px 14px 14px;
+      display: block;
+    }
+
+    /* Floating badge */
+
+    .members {
+      position: absolute;
+      top: 25px;
+      left: 20px;
+      transform: translateY(-3px);
+      background: #176257;
+      color: white;
+      border-radius: 7px;
+      padding: 9px 13px;
+      font-size: 9px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 3px 10px rgba(0,0,0,.1);
+      z-index: 4;
+    }
+
+    .avatars {
+      display: flex;
+    }
+
+    .avatar {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      border: 1px solid white;
+      margin-left: -4px;
+      object-fit: cover;
+    }
+
+    .avatar:first-child {
+      margin-left: 0;
+    }
+
+    /* Decorative bottom-right area */
+
+    .hero-image-area::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 70px;
+      height: 70px;
+      background: #176257;
+    }
+
+    /* ---------------- RESPONSIVE ---------------- */
+
+    @media (max-width: 900px) {
+      .navbar {
+        padding: 0 35px;
+      }
+
+      .nav-links {
+        margin-left: 20px;
+        gap: 15px;
+      }
+
+      .hero-content {
+        padding-left: 35px;
+      }
+
+      .hero-title {
+        font-size: 38px;
+      }
+
+      .hero-image {
+        width: 90%;
+      }
+
+      .logos {
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .page {
+        padding: 0;
+      }
+
+      .container {
+        min-height: 100vh;
+      }
+
+      .green-area {
+        display: none;
+      }
+
+      .navbar {
+        padding: 25px;
+        height: auto;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-actions {
+        margin-left: auto;
+      }
+
+      .login {
+        color: #111;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-content {
+        padding: 45px 25px;
+      }
+
+      .hero-title {
+        font-size: 42px;
+      }
+
+      .buttons {
+        margin-bottom: 45px;
+      }
+
+      .logos {
+        flex-wrap: wrap;
+      }
+
+      .hero-image-area {
+        min-height: 400px;
+        padding: 25px;
+      }
+
+      .hero-image {
+        width: 100%;
+        height: 350px;
+      }
+
+      .members {
+        left: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page">
+
+    <section class="container">
+
+      <!-- Green navbar background -->
+      <div class="green-area"></div>
+
+      <!-- NAVIGATION -->
+      <header class="navbar">
+
+        <div class="logo">
+          Nextora.
+        </div>
+
+        <nav class="nav-links">
+          <a href="#">Home</a>
+          <a href="#">About Us</a>
+          <a href="#">Services</a>
+          <a href="#">Projects</a>
+          <a href="#">Blog</a>
+          <a href="#">Pricing</a>
+        </nav>
+
+        <div class="nav-actions">
+          <a href="#" class="login">Log in</a>
+          <button class="signup">Sign up</button>
+        </div>
+
+      </header>
+
+
+      <!-- HERO -->
+      <section class="hero">
+
+        <!-- LEFT SIDE -->
+        <div class="hero-content">
+
+          <h1 class="hero-title">
+            Empower Your<br>
+            Business with<br>
+            Modern Solutions
+          </h1>
+
+          <p class="hero-description">
+            Drive growth, enhance productivity, and achieve more with
+            our innovative services tailored for modern enterprises.
+          </p>
+
+          <div class="buttons">
+            <button class="primary-btn">
+              Get Started
+            </button>
+
+            <a href="#" class="secondary-btn">
+              Explore Services
+            </a>
+          </div>
+
+
+          <!-- CLIENT LOGOS -->
+          <div class="logos">
+
+            <div class="logo-item">
+              <span class="logo-circle"></span>
+              Ovalism
+            </div>
+
+            <div class="logo-item">
+              <span class="logo-circle"></span>
+              Orbital
+            </div>
+
+            <div class="logo-item">
+              webflow
+            </div>
+
+            <div class="logo-item">
+              <span class="logo-circle"></span>
+              Catalyst
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+        <div class="hero-image-area">
+
+          <!-- MEMBERS BADGE -->
+          <div class="members">
+
+            <div class="avatars">
+              <img
+                class="avatar"
+                src="https://i.pravatar.cc/50?img=12"
+                alt=""
+              >
+
+              <img
+                class="avatar"
+                src="https://i.pravatar.cc/50?img=32"
+                alt=""
+              >
+
+              <img
+                class="avatar"
+                src="https://i.pravatar.cc/50?img=44"
+                alt=""
+              >
+            </div>
+
+            Active 2k Members
+
+          </div>
+
+
+          <!-- HERO IMAGE -->
+          <img
+            class="hero-image"
+            src="image.jpeg.png"
+            alt="image"
+          >
+
+        </div>
+
+      </section>
+
+    </section>
+
+  </main>
+
+</body>
+</html>
